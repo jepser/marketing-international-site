@@ -1,8 +1,9 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { Heading, Flex, Box, Text } from 'rebass/styled-components';
-import { background } from 'styled-system';
+import { Heading, Flex, Box } from 'rebass/styled-components';
+
+import Section from '../components/section/section';
 import Container from '../components/container';
 import LogoImage from '../public/logo-marketing.svg';
 
@@ -19,10 +20,6 @@ const Hero = styled(Flex)`
   border-radius: 20px;
 `;
 
-const RoundedBox = styled(Box)`
-  border-radius: 10px;
-`;
-
 const Button = styled.button`
   border: 0;
   padding: 12px 28px;
@@ -34,9 +31,67 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Image = styled.img`
-  display: block;
-`;
+const SERVICES = [
+  {
+    title: 'Identificaciones personales en PVC',
+    description: 'Tarjetas con medidas interacionales (CR80) con impresiones térmicas.',
+    background: '#E4572E',
+    image: '/tarjetas.png',
+    body: () => (
+      <ul>
+        <li>Tarjetas con códigos de barras</li>
+        <li>Tarjetas con chip</li>
+        <li>Tarjetas con banda magnética</li>
+        <li>Tarjetas de proximidad</li>
+      </ul>
+    ),
+  },
+  {
+    title: 'Accesorios para identificadores',
+    description: 'Tarjetas con medidas interacionales (CR80) con impresiones térmicas.',
+    background: '#EFA00B',
+    image: '/accesorios.png',
+    body: () => (
+      <ul>
+        <li>Clips</li>
+        <li>Fundas</li>
+        <li>Cintas</li>
+        <li>Cintas impresas</li>
+        <li>Yoyos</li>
+      </ul>
+    ),
+  },
+  {
+    title: 'Uniformes escolares',
+    description: 'Utilizamos telas cien por ciento algodón, sintéticas y la mezcla de ellas. Para impresiones usamos:',
+    background: '#4CB944',
+    image: '/uniformes.png',
+    body: () => (
+      <ul>
+        <li>Serigrafías</li>
+        <li>Impresión digital</li>
+        <li>Bordados</li>
+        <li>Sublimación</li>
+      </ul>
+    ),
+  },
+  {
+    title: 'Textiles',
+    background: '#08B2E3',
+    image: '/textiles.png',
+    body: () => (
+      <ul>
+        <li>Chalecos con cintas reflectivas</li>
+        <li>Chalecos de periodistas</li>
+        <li>Bolsas</li>
+        <li>Bolsa lapicera</li>
+        <li>Mousepads</li>
+        <li>Baberos impresos</li>
+        <li>Entre otros...</li>
+      </ul>
+    ),
+  },
+];
 
 const Home = () => (
   <Container p="12px">
@@ -54,41 +109,21 @@ const Home = () => (
         </Box>
       </Box>
     </Hero>
-    <Flex my="64px" alignItems="center">
-      <Box width={1 / 2} px="32px">
-        <Heading mb="16px" fontSize={[4]}>
-          Identificaciones personales en PVC
-        </Heading>
-        <Text mb="12px">Tarjetas con medidas interacionales (CR80) con impresiones térmicas.</Text>
-        <ul>
-          <li>Tarjetas con códigos de barras</li>
-          <li>Tarjetas con chip</li>
-          <li>Tarjetas con banda magnética</li>
-          <li>Tarjetas de proximidad</li>
-        </ul>
-      </Box>
-      <RoundedBox width={1 / 2} bg="#E4572E" overflow="hidden">
-        <Image src="/tarjetas.png" alt="tarjetas" />
-      </RoundedBox>
-    </Flex>
-    <Flex my="64px" alignItems="center" flexDirection="row-reverse">
-      <Box width={1 / 2} px="32px">
-        <Heading mb="16px" fontSize={[4]}>
-          Accesorios para identificadores
-        </Heading>
-        <Text mb="12px">Tarjetas con medidas interacionales (CR80) con impresiones térmicas.</Text>
-        <ul>
-          <li>Clips</li>
-          <li>Fundas</li>
-          <li>Cintas</li>
-          <li>Cintas impresas</li>
-          <li>Yoyos</li>
-        </ul>
-      </Box>
-      <RoundedBox width={1 / 2} bg="#EFA00B" overflow="hidden">
-        <Image src="/accesorios.png" alt="tarjetas" />
-      </RoundedBox>
-    </Flex>
+    {SERVICES.map((service, index) => {
+      const { title, body, description, image, background } = service;
+      return (
+        <Section
+          key={title}
+          title={title}
+          description={description}
+          background={background}
+          image={image}
+          reverse={index % 2}
+        >
+          {body}
+        </Section>
+      );
+    })}
   </Container>
 );
 
