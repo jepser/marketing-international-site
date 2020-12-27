@@ -17,8 +17,13 @@ const CssReset = createGlobalStyle`
     font-family: 'Public Sans', sans-serif;
   }
 
-  ol, ul {
-    list-style: none;
+  p {
+    margin-bottom: 20px;
+  }
+
+  li {
+    margin-left: 24px;
+    margin-bottom: 8px;
   }
 
   img {

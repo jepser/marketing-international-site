@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@assets/*": [
-        "./assets/*"
-      ],
-      "@layouts/*": [
-        "./pages/*"
-      ]
-    }
+    // "paths": {
+    //   "@components/*": [
+    //     "./components/*"
+    //   ],
+    //   "@assets/*": [
+    //     "./assets/*"
+    //   ],
+    //   "@layouts/*": [
+    //     "./pages/*"
+    //   ]
+    // }
   }
 }
